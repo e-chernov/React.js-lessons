@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+  </head>
+
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      class App extends React.Component {
+        
+        constructor() {
+          super();
+          this.state = {
+          	hrefs: [
+          		{href: '1.html', text: 'ссылка 1'},
+          		{href: '2.html', text: 'ссылка 2'},
+          		{href: '3.html', text: 'ссылка 3'},
+          	]
+          };
+        }
+        
+        toggleText() {
+          this.setState({show: !this.state.show});
+        }
+        
+        render() {
+          const list = this.state.hrefs.map((item, index) => {
+            return <li><a href={item.href}>{item.text}</a></li>
+          });
+          return <div>
+                  {list}
+                 </div>
+        }
+        
+      }
+      
+      ReactDOM.render(
+      	<App />,
+      	document.getElementById('content')
+      );
+    </script>
+  </body>
+
+</html>
